@@ -73,6 +73,7 @@
 		#footer	{bottom:0px;left:0px;right:0px;height:60px;position:absolute}
 		#wrapper{top:0px;left:0px;right:0px;bottom:60px;position:absolute}
 		#code	{top:0px;bottom:0px;left:0px;width:49%;overflow-y:auto;position:absolute;height: 100%; border: 0 none;resize: none; font-size: 14px;border-right: 1px solid #EEEEEE;padding-right:1%}
+		#code:focus {outline: none}
 		#output	{top:0px;bottom:0px;right:0px;width:49%;overflow-y:auto;position:absolute;font-size: 14px}
 		
 		#footer {
@@ -232,7 +233,7 @@
 				
 				$('#output').append( output );
 				$('#output').scrollTop(99999);
-				$("#execute").animate('background-color', 'silver');
+				$("#execute").css('background-color', 'silver');
 				$("#timer").css('color', 'white');
 				//$('#currsor').stop(true, true).show().delay(500).fadeOut();
 
