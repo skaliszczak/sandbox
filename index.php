@@ -73,7 +73,7 @@
 		#footer	{bottom:0px;left:0px;right:0px;height:60px;position:absolute}
 		#wrapper{top:0px;left:0px;right:0px;bottom:60px;position:absolute}
 		#code	{top:0px;bottom:0px;left:0px;width:49%;overflow-y:auto;position:absolute;height: 100%; border: 0 none;resize: none; font-size: 14px;border-right: 1px solid #EEEEEE;padding-right:1%}
-		#output	{top:0px;bottom:0px;right:0px;width:49%;overflow-y:auto;position:absolute}
+		#output	{top:0px;bottom:0px;right:0px;width:49%;overflow-y:auto;position:absolute;font-size: 14px}
 		
 		#footer {
 			border-top: 1px solid #CFCFCF;
@@ -108,6 +108,10 @@
 			padding: 3px 12px;
 			cursor: pointer;
 		}
+		#toolbar #execute:focus,
+		#toolbar #cls:focus {
+			outline: none;
+		}
 		#settings {
 			display:inline;
 		}
@@ -120,9 +124,7 @@
 		#footer #timer{
 			display: inline;
 		}
-		#footer:hover #timer{
-	
-		}
+		#footer:hover #timer{}
 		#message {
 			background: none repeat scroll 0 0 #EAECED;
 			border: 1px solid #B5C1C6;
@@ -208,7 +210,10 @@
 		
 		$("#execute").on('click', function(event) {
 			
-			$("#execute").css('background-color', '#ABABAB');
+			$("#execute").css('background-color', '#bf6a6a');
+			$("#timer").css('color', '#bf6a6a');
+			
+			execTime = 0;
 			
 			$.post('.', {
 				code: $("#code").val(),
@@ -227,7 +232,8 @@
 				
 				$('#output').append( output );
 				$('#output').scrollTop(99999);
-				$("#execute").css('background-color', 'silver');
+				$("#execute").animate('background-color', 'silver');
+				$("#timer").css('color', 'white');
 				//$('#currsor').stop(true, true).show().delay(500).fadeOut();
 
 			}).error(function(output) {
@@ -279,7 +285,6 @@
 			if (colorSwitching) {
 				colorTime += 0.1;
 				hue = colorTime * 20 % 360;
-				
 			}
 			var lightness = 100 - execTime * 10;
 
